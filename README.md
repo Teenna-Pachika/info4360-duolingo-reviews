@@ -18,7 +18,7 @@ Duolingo is one of the most popular language-learning apps, and 87% of its recen
 
 | Column | Description |
 |---|---|
-|`reviewId`|Unique ID for each review|
+| `reviewId` | Unique ID for each review |
 | `content` | Text of the review |
 | `score` | Star rating, from 1 to 5 |
 | `thumbsUpCount` | Number of users who marked the review as helpful |
