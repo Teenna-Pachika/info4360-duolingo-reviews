@@ -67,9 +67,3 @@ We are following Path B (understanding/extraction). We'll use the Claude API to 
 4. Run `notebooks/01_exploration_keywords_claude.ipynb`, then `notebooks/02_sentiment_topics_path.ipynb`.
 
 Note: The notebooks use the saved file in `data/`, so you don't need to download the reviews again. Rerunning `collect_reviews.ipynb` pulls the newest reviews, so the numbers would be different from ours.
-
-## How to run
-1. Install the packages: `pip install google-play-scraper pandas`
-2. Run `collect_reviews.ipynb`
-
-Note: Rerunning the notebook pulls the newest reviews, so the numbers will be slightly different from ours. To reproduce our results exactly, use the saved file in `data/`.
