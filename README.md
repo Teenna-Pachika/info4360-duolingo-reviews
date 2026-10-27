@@ -73,8 +73,3 @@ Note: The notebooks use the saved file in `data/`, so you don't need to download
 2. Run `collect_reviews.ipynb`
 
 Note: Rerunning the notebook pulls the newest reviews, so the numbers will be slightly different from ours. To reproduce our results exactly, use the saved file in `data/`.
-
-## Team
-
-- Teenna Pachika
-- Johanna Garcia
