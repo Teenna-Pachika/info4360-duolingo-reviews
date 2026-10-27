@@ -16,7 +16,7 @@ def build_tfidf(texts, extra_stopwords=("duolingo", "app")):
 # Find k topics and list the top words of each one.
 def show_topics(tfidf, T, k, n_words=10):
     """Fit NMF with k topics and return the model and a table of top words."""
-    nmf = NMF(n_components=k, random_state=42).fit(T)
+    nmf = NMF(n_components=k, random_state=42, max_iter=500).fit(T)
     words = tfidf.get_feature_names_out()
     topics = {f"Topic {i}": ", ".join(words[t.argsort()[-n_words:][::-1]])
               for i, t in enumerate(nmf.components_)}
