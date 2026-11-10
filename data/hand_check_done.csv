@@ -1,0 +1,31 @@
+﻿reviewId,content,claude_labels,claude_correct,claude_missed,notes
+b8f06851-56aa-4690-b2ca-de376a5ccd05,useless app,"[""other""]",y,,
+3ae02a28-a879-4b02-a43e-ac63c72e4605,trash,"[""other""]",y,,
+3fa36d93-13c5-4bea-8b59-f454b6b3b7f8,"pekak aku cakap betul dia pegi cakap Salah ,sampai aku menjerit dia tak dengar pekak app ni","[""teaching_quality""]",n,bugs,"speech recognition not hearing her (Malay), not about lesson content"
+38c3b9f5-2c12-431a-8fc6-654ec9930020,I hate this app it's very bad,"[""other""]",y,,
+d6b11b7c-3b94-4c14-91ea-7279c5b2b88e,horrible,"[""other""]",y,,
+aab90bd8-a307-4c5f-ae55-4b355d366590,I had given 5 stars before. now I took them away because it's been weeks that my app is apparently bugged no way to fix it. because of the bug I cannot do speaking exercises. Other star was taken away because of the wrong pronunciation coming from the AI.,"[""bugs"", ""ai""]",partial,teaching_quality,"wrong pronunciation means the lesson content is wrong, so teaching_quality too"
+91719208-4725-406c-aeae-93f9ab18c8e9,No way to get rid of the disgusting melting owl face.,"[""icon_notifications""]",y,,
+319d2cfa-3fac-4399-b188-f9e7a768aebc,"Nothing but AI slop now, and they can constantly update units of the lessons so thing I have already done can appear again in the future which is just waste of time and app design of you making mistakes being punishing is really bad because you are supposed to learn the language by making mistakes it's just made this way to encourage the buying premium so basically free tier is worthless except just reaching you the most basic stuff.","[""ai"", ""paywall""]",partial,"teaching_quality, energy_hearts",also complains about repeated units and being punished for mistakes
+7346de36-6b34-41bd-bccf-673e21c71991,"The sound lesson are terrible, I got so many falses just because the app doesn't really good at listening the user. It get me everytime.","[""bugs""]",y,,
+43414bd3-d6db-42dd-81a2-583d57ac1f41,Disgusting.,"[""other""]",y,,
+9f5df6b8-30d0-468e-a86a-59a64428b116,Can we just learn the language please? I don't want the constant game type interludes. I'm not 9 years old. Too many disturbances and not enough learning.,"[""teaching_quality""]",y,,
+4ccfdd76-02d5-4cef-890b-187473f655dd,not nice,"[""other""]",y,,
+c591938d-07fe-453d-be5d-4cd44da52e20,you apps my favourite,"[""other""]",y,,"actually positive review, probably low star by mistake"
+861430d9-c782-4bb1-9f93-32697277911e,the app is good,"[""other""]",y,,"actually positive review, probably low star by mistake"
+2c4e49c3-153d-4833-98bb-ba807b0b84c7,bring heart system back,"[""energy_hearts""]",y,,wants old hearts system back over energy; still fits energy_hearts
+0f41ecfe-a90a-45ac-ae7e-63cac428a5ee,No way to learn the Bangladeshi language (Bangla),"[""language_access""]",y,,
+1b0cdf5e-ac7d-44c3-9812-bd87c2e98055,i want learn not waint for points and energy duolingo has become more pay to continue i wasted my time here,"[""energy_hearts"", ""paywall""]",y,,
+75109b7b-13ba-4924-8f5c-0f656e0c7ae1,"I'm only learning German, but for some reason when I do a ""words"" session instead of English to German (& vice versa), it's randomly doing Dutch to German. Some kind of bug.","[""bugs""]",y,,
+bc187a26-03cf-4e27-a58b-b20e10a0c1f5,I paid for a year of Duo Max. It allowed me to use duo max for 5 weeks and now says I have no subscription with them. Will not allow me to do the video calls and also gives me adds again. Charged me $167 for a year only to give me 5 weeks.,"[""paywall"", ""ads""]",partial,bugs,"paid subscription stopped being recognized, that's something not working"
+230be2ea-3191-4d32-b72a-34a7af3acb6b,AI Slop,"[""ai""]",y,,
+50ccdbdb-ae1b-460d-89ea-aa14e73fd891,the worst app in the world!!!!!!!!!!!!!!!!!!!!!!,"[""other""]",y,,
+b45af279-0816-4ba1-b5af-a130ba45b727,Very Nice ü•≥ü•≥ü•≥ü•≥ü•≥,"[""other""]",y,,actually positive review
+20f52dc5-9c9d-49ce-ac6e-239e1befc091,"Very bad, even with the subscription. Don't waste your time on this app if you want to learn a new language. I have been using duolingo for more than a year and also other apps like Rosetta stone, Pimsleur, LingoDeer, Renshuu... They all have different ways to teach you, but duolingo is by far the worst. it's just a app that works like a game. You just click to earn points to try to win your league and try to get to the next level. But you don't learn a language you just click...","[""teaching_quality""]",y,,
+9ce2d172-fda6-4226-a00f-efc2e8869455,je veut t√©l√©charg√© Duolingo,"[""other""]",y,,"French: 'I want to download Duolingo', not really a complaint"
+c49ac5fc-103c-44d9-8aed-abc287720bf0,heyyooo so I was tryna learn Filipino but the learning for Filipino wasn't really there and I Suck at Filipino especially on subjects and yes I'm a Filipino myself but I hardly know any Filipino words thanks for reading!,"[""teaching_quality""]",n,,"no real Filipino course, that's a missing language, not bad lessons (borderline)"
+a2bd7379-0939-44c3-8e37-9fbd37447d83,full of discrimination,"[""other""]",y,,too vague to tell what the discrimination is about
+24ddd24a-0d06-46fe-a998-ffb787249221,Terrible experience.,"[""other""]",y,,
+f2f92cec-13bb-4a40-95ef-349c761856d7,it is very helpful for learn english.,"[""other""]",y,,actually positive review
+b2a0ec7f-7f7a-40a2-b837-c6b6cbe59b37,It is very nice at the beginning but then it needs money to continue,"[""paywall""]",partial,,needs money to continue' sounds like running out of energy (borderline)
+3e01407d-4fe5-4d01-8a0a-1ee6a1f972b2,"–∫–∞–∫ —Ç–∞–∫ –ø–æ–ª—É—á–∞–µ—Ç—Å—è - –Ω–∞—á–∏–Ω–∞–µ—à—å —É—Ä–æ–∫ —Å –ø–æ–ª–æ–≤–∏–Ω–æ–π —ç–Ω–µ—Ä–≥–∏–∏, –∞ –∏–º–µ–Ω–Ω–æ 13, –∏ —Ç–µ–±–µ –Ω–µ —Ö–≤–∞—Ç–∞–µ—Ç –ø—Ä–∏ —É—Ä–æ–∫–µ –±–∫–∑ –æ—à–∏–±–æ–∫... –ò –µ—Å–ª–∏ –±—ã —ç—Ç–æ 1 —Ä–∞–∑ –Ω–µ –ø–æ–≤–µ–∑–ª–æ - —ç—Ç–æ –ø—Ä–æ–∏—Å—Ö–æ–¥–∏—Ç –ø–æ—Å—Ç–æ—è–Ω–Ω–æ, –±—É–∫–≤–∞–ª—å–Ω–æ –ø–æ—Å–ª–µ –∫–∞–∂–¥–æ–≥–æ —É—Ä–æ–∫–∞ —Ç—Ä–µ–±—É–µ—Ç —Å–º–æ—Ç—Ä–µ—Ç—å —Ä–µ–∫–ª–∞–º—É. —Å–∏—Å—Ç–µ–º–∞ —Å 25 —ç–Ω–µ—Ä–≥–∏–µ–π –ø—Ä–æ—Å—Ç–æ –æ—Ç–≤—Ä–∞—Ç–∏—Ç–µ–ª—å–Ω–∞","[""energy_hearts"", ""ads""]",y,,"Russian: energy runs out mid-lesson, forced to watch ads"
