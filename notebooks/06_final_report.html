@@ -7802,8 +7802,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="What's-Driving-Negative-Duolingo-Reviews,-and-Do-Those-Complaints-Get-Better-or-Worse-After-App-Updates?">What's Driving Negative Duolingo Reviews, and Do Those Complaints Get Better or Worse After App Updates?<a class="anchor-link" href="#What's-Driving-Negative-Duolingo-Reviews,-and-Do-Those-Complaints-Get-Better-or-Worse-After-App-Updates?">¶</a></h1><p><em>Teenna Pachika and Johanna Garcia · INFO 4360 Course Project · Final Report</em></p>
-<p>Duolingo is one of the most popular language-learning apps in the world, and most of its Google Play reviews are glowing: 87% give it 4 or 5 stars. But behind those good ratings is a smaller group of unhappy users. In just six weeks this summer, about 4,150 people left a 1- or 2-star review. These users matter because they are the most likely to quit the app, and their reviews are what new users read before they download it.</p>
+<h1 id="Notebook-06:-Final-Report">Notebook 06: Final Report<a class="anchor-link" href="#Notebook-06:-Final-Report">¶</a></h1><p><strong>Team:</strong> Teenna Pachika and Johanna Garcia</p>
+<h3 id="What's-Driving-Negative-Duolingo-Reviews,-and-Do-Those-Complaints-Get-Better-or-Worse-After-App-Updates?">What's Driving Negative Duolingo Reviews, and Do Those Complaints Get Better or Worse After App Updates?<a class="anchor-link" href="#What's-Driving-Negative-Duolingo-Reviews,-and-Do-Those-Complaints-Get-Better-or-Worse-After-App-Updates?">¶</a></h3><p>Duolingo is one of the most popular language-learning apps in the world, and most of its Google Play reviews are glowing: 87% give it 4 or 5 stars. But behind those good ratings is a smaller group of unhappy users. In just six weeks this summer, about 4,150 people left a 1- or 2-star review. These users matter because they are the most likely to quit the app, and their reviews are what new users read before they download it.</p>
 <p>The problem is that a star rating only tells you that someone is unhappy, not <em>why</em>. Duolingo's product team can't read thousands of reviews by hand, so they need a faster way to see what people are complaining about and when it changes. In this report, we find the most common complaints in negative reviews, check whether any of them grew after recent app updates, and turn that into clear recommendations to help the team decide what to fix first.</p>
 </div>
 </div>
@@ -7815,7 +7815,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="How-to-read-this-report">How to read this report<a class="anchor-link" href="#How-to-read-this-report">¶</a></h3><p>Each section builds on the one before it. We start with the data, recap what simple text analysis told us in Phase 2, and then show how we used Claude, an AI model, to label every negative review by complaint type. Finally, we look at how those complaints changed over time and which ones other users agreed with most, and we turn that into recommendations. The code is here so anyone can check our work, but you can follow the story by reading only the text and the charts.</p>
+<h3 id="How-to-read-this-report">How to read this report<a class="anchor-link" href="#How-to-read-this-report">¶</a></h3><p>Each section builds on the one before it. We start with the data, recap what simple text analysis told us, and then show how we used Claude, an AI model, to label every negative review by complaint type. Finally, we look at how those complaints changed over time and which ones other users agreed with most, and we turn that into recommendations. The code is here so anyone can check our work, but you can follow the story by reading only the text and the charts.</p>
 <h3 id="Contents">Contents<a class="anchor-link" href="#Contents">¶</a></h3><ol>
 <li><strong>The Data:</strong> where the reviews come from and how we cleaned them</li>
 <li><strong>What We Learned First:</strong> keywords, sentiment, and topics from Phase 2</li>
@@ -7881,7 +7881,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1.-The-Data">1. The Data<a class="anchor-link" href="#1.-The-Data">¶</a></h2><p>We collected our own data. Using a Python package called <code>google-play-scraper</code> (see <code>collect_reviews.ipynb</code>), we downloaded <strong>50,000 Google Play reviews</strong> of the Duolingo app from US users writing in English. The reviews cover about six weeks, from <strong>July 29 to September 6, 2026</strong> (there is only one review after September 6, so we stop there when we look at trends over time).</p>
+<h2 id="1.-The-Data">1. The Data<a class="anchor-link" href="#1.-The-Data">¶</a></h2><p>We collected our own data. Using a Python package called <code>google-play-scraper</code> (see <code>collect_reviews.ipynb</code>), we downloaded 50,000 Google Play reviews of the Duolingo app from US users writing in English. The reviews cover about six weeks, from July 29 to September 6, 2026 (there is only one review after September 6, so we stop there when we look at trends over time).</p>
 <p>Each review has six pieces of information:</p>
 <table>
 <thead>
@@ -7929,11 +7929,11 @@ a.anchor-link {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="How-we-cleaned-it">How we cleaned it<a class="anchor-link" href="#How-we-cleaned-it">¶</a></h3><p>We kept the cleaning simple, because the text was already in good shape (no HTML, links, or empty reviews):</p>
 <ul>
-<li><strong>Privacy:</strong> we removed usernames and profile pictures before saving the data, so no review can be linked to a person.</li>
-<li><strong>Dates:</strong> we turned the date column into real dates, so we could group reviews by week.</li>
-<li><strong>Word count:</strong> we added a column with the number of words in each review.</li>
-<li><strong>Duplicates:</strong> about 11,800 reviews have the exact same text as another review. When we looked, they were short, positive reviews like "good" or "nice app," not spam, so we kept them. They don't affect the negative reviews we focus on.</li>
-<li><strong>Missing app versions:</strong> about 4,100 reviews (8%) don't say which app version the user had. Because of this, we use <strong>weeks</strong> as our main way to track changes over time.</li>
+<li><strong>Privacy:</strong> We removed usernames and profile pictures before saving the data, so no review can be linked to a person.</li>
+<li><strong>Dates:</strong> We turned the date column into real dates, so we could group reviews by week.</li>
+<li><strong>Word count:</strong> We added a column with the number of words in each review.</li>
+<li><strong>Duplicates:</strong> About 11,800 reviews have the exact same text as another review. When we looked, they were short, positive reviews like "good" or "nice app," not spam, so we kept them. They don't affect the negative reviews we focus on.</li>
+<li><strong>Missing app versions:</strong> About 4,100 reviews (8%) don't say which app version the user had. Because of this, we use <strong>weeks</strong> as our main way to track changes over time.</li>
 </ul>
 <p>The functions we used to load and clean the data are in <code>src/preprocessing.py</code>, so every notebook uses the same steps.</p>
 </div>
@@ -8029,7 +8029,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="What-the-data-looks-like">What the data looks like<a class="anchor-link" href="#What-the-data-looks-like">¶</a></h3><p>Most Duolingo users are happy. Almost three out of four reviews give 5 stars, and only <strong>8.3% (4,147 reviews) give 1 or 2 stars</strong>. Among those negative reviews, 1-star reviews are much more common than 2-star ones (3,049 vs. 1,098): when people are unhappy with the app, they tend to say so strongly.</p>
+<h3 id="What-the-data-looks-like">What the data looks like<a class="anchor-link" href="#What-the-data-looks-like">¶</a></h3><p>Most Duolingo users are happy. Almost three out of four reviews give 5 stars, and only 8.3% (4,147 reviews) give 1 or 2 stars. Among those negative reviews, 1-star reviews are much more common than 2-star ones (3,049 vs. 1,098): when people are unhappy with the app, they tend to say so strongly.</p>
 </div>
 </div>
 </div>
@@ -8105,7 +8105,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The share of negative reviews also changed over time. It stayed around 7.5% for most of August, then jumped to <strong>9.9% in the week ending August 30</strong> and stayed above 9% the week after. Something seems to have made users more unhappy in late August, and finding out what is one of the main goals of this report.</p>
+<p>The share of negative reviews also changed over time. It stayed around 7.5% for most of August, then jumped to 9.9% in the week ending August 30 and stayed above 9% the week after. Something seems to have made users more unhappy in late August, and finding out what is one of the main goals of this report.</p>
 </div>
 </div>
 </div>
@@ -8143,7 +8143,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Why we focus on negative reviews:</strong> they are only 8% of all reviews, but they are longer, more detailed, and they rose in late August. For the rest of this report, we look mainly at these <strong>4,147 negative reviews</strong> to understand what users are complaining about.</p>
+<p><strong>Why we focus on negative reviews:</strong> They are only 8% of all reviews, but they are longer, more detailed, and they rose in late August. For the rest of this report, we look mainly at these 4,147 negative reviews to understand what users are complaining about.</p>
 </div>
 </div>
 </div>
@@ -8154,7 +8154,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2.-What-We-Learned-First">2. What We Learned First<a class="anchor-link" href="#2.-What-We-Learned-First">¶</a></h2><p>Before using an AI model, we tried three classic text analysis methods in Phase 2: <strong>keywords</strong>, <strong>sentiment analysis</strong>, and <strong>topic modeling</strong>. They are free, fast, and easy to repeat. Each one taught us something useful, but each one also had a clear limit. Together, those limits are the reason we brought in Claude.</p>
+<h2 id="2.-What-We-Learned-First">2. What We Learned First<a class="anchor-link" href="#2.-What-We-Learned-First">¶</a></h2><p>Before using an AI model, we tried three classic text analysis methods: <strong>keywords</strong>, <strong>sentiment analysis</strong>, and <strong>topic modeling</strong>. They are free, fast, and easy to repeat. Each one taught us something useful, but each one also had a clear limit. Together, those limits are the reason we brought in Claude.</p>
 </div>
 </div>
 </div>
@@ -8165,7 +8165,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Keywords:-the-complaints-we-expected-are-there">Keywords: the complaints we expected are there<a class="anchor-link" href="#Keywords:-the-complaints-we-expected-are-there">¶</a></h3><p>We first compared the words in negative and positive reviews. Simply counting the most common words didn't help much, because words like "learning," "language," and "good" appear everywhere. Comparing how often each word shows up in negative vs. positive reviews was much more useful. For example, "ads" appears in 7.5% of negative reviews but only 0.9% of positive ones, and "energy" in 7.3% vs. 0.7%. Two words we didn't expect also stood out: "AI" and "icon" (Duolingo keeps changing its app icon to sad or strange owl faces).</p>
+<h3 id="Keywords:-The-complaints-we-expected-are-there">Keywords: The complaints we expected are there<a class="anchor-link" href="#Keywords:-The-complaints-we-expected-are-there">¶</a></h3><p>We first compared the words in negative and positive reviews. Simply counting the most common words didn't help much, because words like "learning," "language," and "good" appear everywhere. Comparing how often each word shows up in negative vs. positive reviews was much more useful. For example, "ads" appears in 7.5% of negative reviews but only 0.9% of positive ones, and "energy" in 7.3% vs. 0.7%. Two words we didn't expect also stood out: "AI" and "icon" (Duolingo keeps changing its app icon to sad or strange owl faces).</p>
 <p>We then turned these words into simple rules for complaint categories. A review counts as an "ads" complaint, for example, if it mentions "ad," "ads," or "advert."</p>
 </div>
 </div>
@@ -8230,7 +8230,7 @@ Negative reviews that match no rule: 61.8%
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Paying is the most common keyword complaint (about 14% of negative reviews), followed by ads and energy (about 9% each). But the biggest number is at the bottom: <strong>about 62% of negative reviews don't match any rule.</strong> Some are too short to tell ("so bad"), but many describe a real problem in words our rules don't catch. For example, "I lost my 300 days" is clearly a streak complaint, but it never says "streak."</p>
+<p>Paying is the most common keyword complaint (about 14% of negative reviews), followed by ads and energy (about 9% each). But the biggest number is at the bottom: about 62% of negative reviews don't match any rule. Some are too short to tell ("so bad"), but many describe a real problem in words our rules don't catch. For example, "I lost my 300 days" is clearly a streak complaint, but it never says "streak."</p>
 </div>
 </div>
 </div>
@@ -8241,7 +8241,7 @@ Negative reviews that match no rule: 61.8%
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Sentiment:-it-shows-who-is-upset,-but-not-why">Sentiment: it shows who is upset, but not why<a class="anchor-link" href="#Sentiment:-it-shows-who-is-upset,-but-not-why">¶</a></h3><p>Next, we scored every review with VADER, a sentiment tool that rates text from -1 (very negative) to +1 (very positive). On average, the text matches the stars: sentiment goes up from -0.06 for 1-star reviews to 0.53 for 5-star reviews. But the chart below shows the problem. <strong>About one in three 1-star reviews sounds positive</strong>, because people often write things like "I loved this app until the last update." VADER reads the word "loved" and misses the complaint.</p>
+<h3 id="Sentiment:-It-shows-who-is-upset,-but-not-why">Sentiment: It shows who is upset, but not why<a class="anchor-link" href="#Sentiment:-It-shows-who-is-upset,-but-not-why">¶</a></h3><p>Next, we scored every review with VADER, a sentiment tool that rates text from -1 (very negative) to +1 (very positive). On average, the text matches the stars: sentiment goes up from -0.06 for 1-star reviews to 0.53 for 5-star reviews. But the chart below shows the problem. About one in three 1-star reviews sounds positive, because people often write things like "I loved this app until the last update." VADER reads the word "loved" and misses the complaint.</p>
 </div>
 </div>
 </div>
@@ -8279,7 +8279,7 @@ Negative reviews that match no rule: 61.8%
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Topic-modeling:-it-found-the-main-themes,-plus-some-surprises">Topic modeling: it found the main themes, plus some surprises<a class="anchor-link" href="#Topic-modeling:-it-found-the-main-themes,-plus-some-surprises">¶</a></h3><p>Finally, we used topic modeling (NMF), which groups reviews by the words they share without us telling it what to look for. We ran it on the 3,267 negative reviews with at least 5 words, after removing generic words like "app," "language," and "good" that appear in almost every review. We tried 6, 8, and 10 topics and kept <strong>10</strong>, because each topic was about one clear theme.</p>
+<h3 id="Topic-modeling:-It-found-the-main-themes,-plus-some-surprises">Topic modeling: It found the main themes, plus some surprises<a class="anchor-link" href="#Topic-modeling:-It-found-the-main-themes,-plus-some-surprises">¶</a></h3><p>Finally, we used topic modeling (NMF), which groups reviews by the words they share without us telling it what to look for. We ran it on the 3,267 negative reviews with at least 5 words, after removing generic words like "app," "language," and "good" that appear in almost every review. We tried 6, 8, and 10 topics and kept <strong>10</strong>, because each topic was about one clear theme.</p>
 </div>
 </div>
 </div>
@@ -8334,7 +8334,7 @@ Negative reviews that match no rule: 61.8%
 <li><strong>Sentiment</strong> shows how people feel, not what they complain about.</li>
 <li><strong>Topics</strong> give each review only one theme, and one theme is too broad.</li>
 </ul>
-<p>We needed a tool that could read each review the way a person would, understand the context, and give it <strong>one or more</strong> complaint labels. That's why we used Claude.</p>
+<p>We needed a tool that could read each review the way a person would, understand the context, and give it one or more complaint labels. That's why we used Claude.</p>
 </div>
 </div>
 </div>
@@ -8617,7 +8617,7 @@ Reviews with more than one complaint: 23%
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p><strong>Check 2: a stricter re-check for bugs.</strong> When we read reviews where Claude and the keywords disagreed, we noticed Claude was too loose with "bugs." For example, it labeled a complaint about losing chess points as a bug, even though that's about the game rules. Since bugs looked like one of the biggest complaints, we sent only the "bugs" reviews back to Claude with this stricter prompt:</p>
+<p><strong>Check 2: A stricter re-check for bugs.</strong> When we read reviews where Claude and the keywords disagreed, we noticed Claude was too loose with "bugs." For example, it labeled a complaint about losing chess points as a bug, even though that's about the game rules. Since bugs looked like one of the biggest complaints, we sent only the "bugs" reviews back to Claude with this stricter prompt:</p>
 </div>
 </div>
 </div>
@@ -8804,8 +8804,8 @@ Wrong:          2 of 30
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Claude was <strong>fully right on 24 of 30 reviews (80%)</strong> and at least partly right on 28 of 30 (93%). Its mistakes followed a pattern. In the partial cases, Claude usually found the main complaint but missed a second one, like a review about AI lessons that also complained about losing hearts. In the two wrong cases, Claude mixed up similar categories: a review in Malay about the app not hearing the user's voice was labeled "teaching quality" instead of "bugs," and a review about a missing Filipino course was labeled "teaching quality" instead of "language access."</p>
-<p>Because agreement was high and the mistakes were small, we decided Claude's labels were good enough to build our analysis on. The main lesson is that Claude may <strong>undercount</strong> complaints a little, especially in reviews that mention several problems.</p>
+<p>Claude was fully right on 24 of 30 reviews (80%) and at least partly right on 28 of 30 (93%). Its mistakes followed a pattern. In the partial cases, Claude usually found the main complaint but missed a second one, like a review about AI lessons that also complained about losing hearts. In the two wrong cases, Claude mixed up similar categories: a review in Malay about the app not hearing the user's voice was labeled "teaching quality" instead of "bugs," and a review about a missing Filipino course was labeled "teaching quality" instead of "language access."</p>
+<p>Because agreement was high and the mistakes were small, we decided Claude's labels were good enough to build our analysis on. The main lesson is that Claude may undercount complaints a little, especially in reviews that mention several problems.</p>
 </div>
 </div>
 </div>
@@ -8816,7 +8816,7 @@ Wrong:          2 of 30
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="API-usage-and-cost">API usage and cost<a class="anchor-link" href="#API-usage-and-cost">¶</a></h3><p>Claude charges by the number of tokens (small pieces of words) sent in and received. We kept track of every call. At Haiku 4.5's price of about $1 per million input tokens and $5 per million output tokens, <strong>labeling all 4,147 negative reviews and re-checking bugs cost about $0.70 in total.</strong></p>
+<h3 id="API-usage-and-cost">API usage and cost<a class="anchor-link" href="#API-usage-and-cost">¶</a></h3><p>Claude charges by the number of tokens (small pieces of words) sent in and received. We kept track of every call. At Haiku 4.5's price of about $1 per million input tokens and $5 per million output tokens, labeling all 4,147 negative reviews and re-checking bugs cost about $0.70 in total.</p>
 </div>
 </div>
 </div>
@@ -8911,12 +8911,12 @@ Wrong:          2 of 30
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Was-Claude-worth-it?">Was Claude worth it?<a class="anchor-link" href="#Was-Claude-worth-it?">¶</a></h3><p><strong>Yes, for labeling complaints.</strong> For less than a dollar, Claude labeled every negative review, cut the share of unexplained reviews in half compared to keywords, could give one review several labels, and agreed with us 80% of the time. Doing this by hand would have taken days. It also worked on reviews in other languages and in mixed languages like Hindi-English, which our keyword rules couldn't read at all.</p>
-<p><strong>But it wasn't needed for everything.</strong> Simpler tools were enough for other parts of the project:</p>
+<h3 id="Was-Claude-worth-it?">Was Claude worth it?<a class="anchor-link" href="#Was-Claude-worth-it?">¶</a></h3><p>Yes, for labeling complaints. For less than a dollar, Claude labeled every negative review, cut the share of unexplained reviews in half compared to keywords, could give one review several labels, and agreed with us 80% of the time. Doing this by hand would have taken days. It also worked on reviews in other languages and in mixed languages like Hindi-English, which our keyword rules couldn't read at all.</p>
+<p>But it wasn't needed for everything. Simpler tools were enough for other parts of the project:</p>
 <ul>
-<li><strong>Star ratings and counts</strong> already told us <em>who</em> was unhappy and <em>when</em>, with no AI.</li>
-<li><strong>Keywords</strong> were free and almost as good for complaints that always use the same word, like "ads" or "AI" (6.5% with keywords vs. 6.7% with Claude).</li>
-<li><strong>Topic modeling</strong> was free and found surprises we hadn't thought of, like the chess course, which helped us choose Claude's categories.</li>
+<li>Star ratings and counts already told us <em>who</em> was unhappy and <em>when</em>, with no AI.</li>
+<li>Keywords were free and almost as good for complaints that always use the same word, like "ads" or "AI" (6.5% with keywords vs. 6.7% with Claude).</li>
+<li>Topic modeling was free and found surprises we hadn't thought of, like the chess course, which helped us choose Claude's categories.</li>
 </ul>
 <p><strong>What we'd do differently:</strong> Claude's answers can change slightly if we run it again, so we saved every label instead of re-running it. To save even more, a team could use Claude only on the reviews that keywords can't place, and use the keyword rules for the rest.</p>
 </div>
@@ -8929,7 +8929,7 @@ Wrong:          2 of 30
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4.-What-the-Complaints-Tell-Us">4. What the Complaints Tell Us<a class="anchor-link" href="#4.-What-the-Complaints-Tell-Us">¶</a></h2><p>Now that every negative review has complaint labels, we can answer our question. We look at the complaints in three ways: <strong>how common</strong> each one is, <strong>how it changed over time</strong> around app updates, and <strong>how many other users agree</strong> with it (using thumbs-up). Each view tells a different part of the story.</p>
+<h2 id="4.-What-the-Complaints-Tell-Us">4. What the Complaints Tell Us<a class="anchor-link" href="#4.-What-the-Complaints-Tell-Us">¶</a></h2><p>Now that every negative review has complaint labels, we can answer our question. We look at the complaints in three ways: how common each one is, how it changed over time around app updates, and how many other users agree with it (using thumbs-up). Each view tells a different part of the story.</p>
 </div>
 </div>
 </div>
@@ -9037,7 +9037,7 @@ Wrong:          2 of 30
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="4.1-How-common-is-each-complaint?">4.1 How common is each complaint?<a class="anchor-link" href="#4.1-How-common-is-each-complaint?">¶</a></h3><p>The most common complaints are about <strong>teaching quality</strong> (17.7% of negative reviews), <strong>paying for the app</strong> (16.9%), and <strong>bugs</strong> (13.6%), followed by <strong>energy limits</strong> and <strong>ads</strong> (about 11% each). In other words, users complain about three kinds of things: how well the app teaches, how much it pushes them to pay, and whether it works. About 30% of negative reviews didn't fit any category, usually because they're too short to say what went wrong ("trash," "so bad").</p>
+<h3 id="4.1-How-common-is-each-complaint?">4.1 How common is each complaint?<a class="anchor-link" href="#4.1-How-common-is-each-complaint?">¶</a></h3><p>The most common complaints are about teaching quality (17.7% of negative reviews), paying for the app (16.9%), and bugs (13.6%), followed by energy limits and ads (about 11% each). In other words, users complain about three kinds of things: how well the app teaches, how much it pushes them to pay, and whether it works. About 30% of negative reviews didn't fit any category, usually because they're too short to say what went wrong ("trash," "so bad").</p>
 </div>
 </div>
 </div>
@@ -9247,8 +9247,10 @@ After Aug 24:  55%
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>Most complaints stayed flat over the six weeks, including paying, energy, ads, and bugs. Two complaints explain most of the late-August jump, and both started right after <strong>version 6.94 (around August 26)</strong>:</p>
 <ul>
-<li><strong>Language access almost tripled</strong>, from 0.4 to 1.3 complaints per 100 reviews. More than half of these late-August complaints mention Iran, Persian, or Farsi, compared to only 10% before. Many come from Iranian users who say they lost access to features or to the Duolingo English Test.</li>
-<li><strong>App icon complaints also tripled</strong>, from 0.4 to 1.1 per 100 reviews. Users were upset that Duolingo kept changing the app icon to sad or "melting" owl faces to make them come back.</li>
+<li><p>Language access almost tripled, from 0.4 to 1.3 complaints per 100 reviews. More than half of these late-August complaints mention Iran, Persian, or Farsi, compared to only 10% before. Many come from Iranian users who say they lost access to features or to the Duolingo English Test.</p>
+</li>
+<li><p>App icon complaints also tripled, from 0.4 to 1.1 per 100 reviews. Users were upset that Duolingo kept changing the app icon to sad or "melting" owl faces to make them come back.</p>
+</li>
 </ul>
 <p>So the jump wasn't a general drop in quality. It came from <strong>two specific changes</strong> that upset <strong>two specific groups</strong> of users.</p>
 </div>
@@ -9417,7 +9419,7 @@ After Aug 24:  55%
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Four complaints get <strong>2 to 3 times more thumbs-up than their share of reviews</strong>: paying (16.9% of reviews, but 42.7% of thumbs-up), teaching quality (17.7% vs. 35.6%), ads (10.8% vs. 29.5%), and energy (11.1% vs. 27.4%). The pattern holds even without the two most-liked reviews (paying still gets 34% of thumbs-up), so it isn't driven by one or two viral posts.</p>
+<p>Four complaints get 2 to 3 times more thumbs-up than their share of reviews: paying (16.9% of reviews, but 42.7% of thumbs-up), teaching quality (17.7% vs. 35.6%), ads (10.8% vs. 29.5%), and energy (11.1% vs. 27.4%). The pattern holds even without the two most-liked reviews (paying still gets 34% of thumbs-up), so it isn't driven by one or two viral posts.</p>
 <p>Language access is the opposite: it's 8.8% of negative reviews but only 2.5% of thumbs-up. It's a serious problem for one group of users, but most other users don't share it.</p>
 </div>
 </div>
@@ -9431,8 +9433,10 @@ After Aug 24:  55%
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="4.4-Putting-it-together:-two-different-stories">4.4 Putting it together: two different stories<a class="anchor-link" href="#4.4-Putting-it-together:-two-different-stories">¶</a></h3><p>Looking at all three views together, the complaints fall into two groups:</p>
 <ol>
-<li><strong>Long-running problems that many users share:</strong> paying, energy limits, ads, and teaching quality. They didn't change much over six weeks, but they are common and get the most agreement from other users. These are the problems that affect Duolingo's reputation every day.</li>
-<li><strong>Sudden spikes after a specific update:</strong> the app icon and language access. They tripled right after version 6.94 and caused most of the late-August jump, but each one comes from a specific group of users.</li>
+<li><p>Long-running problems that many users share: Paying, energy limits, ads, and teaching quality. They didn't change much over six weeks, but they are common and get the most agreement from other users. These are the problems that affect Duolingo's reputation every day.</p>
+</li>
+<li><p>Sudden spikes after a specific update: The app icon and language access. They tripled right after version 6.94 and caused most of the late-August jump, but each one comes from a specific group of users.</p>
+</li>
 </ol>
 <p>Both matter, but for different reasons, and they need different responses from the product team.</p>
 </div>
@@ -9448,9 +9452,9 @@ After Aug 24:  55%
 <h2 id="5.-Key-Findings">5. Key Findings<a class="anchor-link" href="#5.-Key-Findings">¶</a></h2><ol>
 <li><p><strong>Two specific changes caused the late-August jump in negative reviews.</strong> Negative reviews rose from 7.6 to 9.5 per 100 reviews after version 6.94 (around August 26). Almost all of that increase came from two complaints that tripled: language access (0.4 → 1.3 per 100 reviews) and the changing app icon (0.4 → 1.1). <em>(Section 4.2)</em></p>
 </li>
-<li><p><strong>Paying is the complaint users agree with most.</strong> Paywall complaints are 16.9% of negative reviews but receive <strong>42.7% of all thumbs-up</strong> (34% even without the two most-liked reviews). Teaching quality, ads, and energy limits show the same pattern, with 2 to 3 times more agreement than their share of reviews. <em>(Section 4.3)</em></p>
+<li><p><strong>Paying is the complaint users agree with most.</strong> Paywall complaints are 16.9% of negative reviews but receive 42.7% of all thumbs-up (34% even without the two most-liked reviews). Teaching quality, ads, and energy limits show the same pattern, with 2 to 3 times more agreement than their share of reviews. <em>(Section 4.3)</em></p>
 </li>
-<li><p><strong>The language-access spike comes from one group of users.</strong> After August 24, <strong>55% of language-access complaints mention Iran, Persian, or Farsi</strong>, up from 10% before. It is a serious problem for this group, but it gets only 2.5% of thumbs-up, so most other users aren't affected. <em>(Section 4.2 and 4.3)</em></p>
+<li><p><strong>The language-access spike comes from one group of users.</strong> After August 24, 55% of language-access complaints mention Iran, Persian, or Farsi, up from 10% before. It is a serious problem for this group, but it gets only 2.5% of thumbs-up, so most other users aren't affected. <em>(Section 4.2 and 4.3)</em></p>
 </li>
 <li><p><strong>Claude made it possible to explain most negative reviews, cheaply and reliably.</strong> With keywords, 62% of negative reviews had no category; with Claude, only 30%. Claude agreed with our hand-check on 24 of 30 reviews, and labeling all 4,147 reviews cost about $0.70. <em>(Section 3)</em></p>
 </li>
@@ -9578,11 +9582,16 @@ After Aug 24:  55%
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="How-this-would-work-in-practice">How this would work in practice<a class="anchor-link" href="#How-this-would-work-in-practice">¶</a></h3><p>The team wouldn't need to read thousands of reviews. Each week, a short report would show how common each complaint is, what changed since last week, and which complaints other users agree with most, with a few example reviews for each. That's enough to decide what to investigate first after every release.</p>
 <h3 id="Limitations-and-risks">Limitations and risks<a class="anchor-link" href="#Limitations-and-risks">¶</a></h3><ul>
-<li><strong>Timing is not proof.</strong> The icon and language-access complaints grew right after version 6.94, but we can't prove the update caused them. Our release dates are estimates, and Duolingo may have made other changes at the same time.</li>
-<li><strong>Our data is limited.</strong> We only have Android users in the US, writing in English, over six weeks. iPhone users, other countries, and longer trends may look different.</li>
-<li><strong>Claude isn't perfect.</strong> It agreed with us on 80% of reviews and sometimes missed a second complaint, so some complaints may be a little undercounted. About 30% of negative reviews are too short or vague to label.</li>
-<li><strong>Thumbs-up favor older and longer reviews.</strong> A review posted early has more time to collect thumbs-up, so agreement is a useful signal but not an exact measure.</li>
-<li><strong>Reviews come from the loudest users.</strong> People who are very unhappy are more likely to write a review, so complaints may look bigger than they are among all users. That's why we recommend testing changes and measuring the results, not just acting on the reviews.</li>
+<li><p><strong>Timing is not proof.</strong> The icon and language-access complaints grew right after version 6.94, but we can't prove the update caused them. Our release dates are estimates, and Duolingo may have made other changes at the same time.</p>
+</li>
+<li><p><strong>Our data is limited.</strong> We only have Android users in the US, writing in English, over six weeks. iPhone users, other countries, and longer trends may look different.</p>
+</li>
+<li><p><strong>Claude isn't perfect.</strong> It agreed with us on 80% of reviews and sometimes missed a second complaint, so some complaints may be a little undercounted. About 30% of negative reviews are too short or vague to label.</p>
+</li>
+<li><p><strong>Thumbs-up favor older and longer reviews.</strong> A review posted early has more time to collect thumbs-up, so agreement is a useful signal but not an exact measure.</p>
+</li>
+<li><p><strong>Reviews come from the loudest users.</strong> People who are very unhappy are more likely to write a review, so complaints may look bigger than they are among all users. That's why we recommend testing changes and measuring the results, not just acting on the reviews.</p>
+</li>
 </ul>
 </div>
 </div>
@@ -9624,13 +9633,13 @@ After Aug 24:  55%
 <td>Compared with keyword rules and hand-checked 30 reviews (24 fully right)</td>
 </tr>
 <tr>
-<td><strong>Claude error: too many bugs</strong></td>
+<td>Claude error: too many bugs</td>
 <td>Claude API</td>
 <td>Labeled design complaints (like losing chess points) as bugs</td>
 <td>Caught while reading disagreements with keywords; a stricter re-check removed 209 bug labels</td>
 </tr>
 <tr>
-<td><strong>Claude error: wrong category</strong></td>
+<td>Claude error: wrong category</td>
 <td>Claude API</td>
 <td>Labeled a Malay review about voice recognition as "teaching quality"</td>
 <td>Caught in our hand-check: it should have been "bugs"</td>
@@ -9642,7 +9651,7 @@ After Aug 24:  55%
 <td>Ran every notebook top to bottom and checked the numbers across notebooks</td>
 </tr>
 <tr>
-<td><strong>Assistant error: weak stopwords</strong></td>
+<td>Assistant error: weak stopwords</td>
 <td>Claude (coding assistant)</td>
 <td>Its first topic model used too few stopwords, so topics were just "language" and "learn"</td>
 <td>We noticed the topics couldn't be named and added generic and opinion words</td>
